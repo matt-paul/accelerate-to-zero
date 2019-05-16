@@ -1,0 +1,21 @@
+type Certificate {
+  id: ID!
+  name: String!
+  accreditedBy: AccreditationOrg!
+}
+
+type AccreditationOrg {
+  id: ID!
+  name: String!
+  certificates: [Certificate!]!
+  website: String!
+}
+
+type Company {
+  id: ID!
+  accreditation: [Certificate]!
+}
+
+type Query {
+  companies: [Company!]!
+}
