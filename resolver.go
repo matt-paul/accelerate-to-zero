@@ -1,3 +1,5 @@
+//go:generate go run github.com/99designs/gqlgen
+
 package accelerate_to_zero
 
 import (
@@ -15,5 +17,9 @@ func (r *Resolver) Query() QueryResolver {
 type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) Companies(ctx context.Context) ([]*Company, error) {
-	return r.companies, nil
+	one := &Company{ID: "78787878", Name: "Shell"}
+	two := &Company{ID: "121212121", Name: "Green Company"}
+	comps := []*Company{one, two}
+	return comps, nil
+	// return r.companies, nil
 }

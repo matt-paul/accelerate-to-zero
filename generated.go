@@ -57,6 +57,7 @@ type ComplexityRoot struct {
 	Company struct {
 		Accreditation func(childComplexity int) int
 		ID            func(childComplexity int) int
+		Name          func(childComplexity int) int
 	}
 
 	Query struct {
@@ -146,6 +147,13 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Company.ID(childComplexity), true
 
+	case "Company.name":
+		if e.complexity.Company.Name == nil {
+			break
+		}
+
+		return e.complexity.Company.Name(childComplexity), true
+
 	case "Query.companies":
 		if e.complexity.Query.Companies == nil {
 			break
@@ -232,6 +240,7 @@ type AccreditationOrg {
 
 type Company {
   id: ID!
+  name: String!
   accreditation: [Certificate]!
 }
 
@@ -505,6 +514,33 @@ func (ec *executionContext) _Company_id(ctx context.Context, field graphql.Colle
 	rctx.Result = res
 	ctx = ec.Tracer.StartFieldChildExecution(ctx)
 	return ec.marshalNID2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Company_name(ctx context.Context, field graphql.CollectedField, obj *Company) graphql.Marshaler {
+	ctx = ec.Tracer.StartFieldExecution(ctx, field)
+	defer func() { ec.Tracer.EndFieldExecution(ctx) }()
+	rctx := &graphql.ResolverContext{
+		Object:   "Company",
+		Field:    field,
+		Args:     nil,
+		IsMethod: false,
+	}
+	ctx = graphql.WithResolverContext(ctx, rctx)
+	ctx = ec.Tracer.StartFieldResolverExecution(ctx, rctx)
+	resTmp := ec.FieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Name, nil
+	})
+	if resTmp == nil {
+		if !ec.HasError(rctx) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	rctx.Result = res
+	ctx = ec.Tracer.StartFieldChildExecution(ctx)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Company_accreditation(ctx context.Context, field graphql.CollectedField, obj *Company) graphql.Marshaler {
@@ -1550,6 +1586,11 @@ func (ec *executionContext) _Company(ctx context.Context, sel ast.SelectionSet, 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
+		case "name":
+			out.Values[i] = ec._Company_name(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
 		case "accreditation":
 			out.Values[i] = ec._Company_accreditation(ctx, field, obj)
 			if out.Values[i] == graphql.Null {
@@ -1911,7 +1952,7 @@ func (ec *executionContext) marshalNCertificate2ᚕᚖgithubᚗcomᚋmattᚑpaul
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNCertificate2ᚖgithubᚗcomᚋmattᚑpaulᚋaccelerateᚑtoᚑzeroᚐCertificate(ctx, sel, v[i])
+			ret[i] = ec.marshalOCertificate2ᚖgithubᚗcomᚋmattᚑpaulᚋaccelerateᚑtoᚑzeroᚐCertificate(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)

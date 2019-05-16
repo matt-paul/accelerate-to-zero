@@ -13,6 +13,7 @@ type AccreditationOrg {
 
 type Company {
   id: ID!
+  name: String!
   accreditation: [Certificate]!
 }
 

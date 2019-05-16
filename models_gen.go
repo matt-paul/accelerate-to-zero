@@ -17,5 +17,6 @@ type Certificate struct {
 
 type Company struct {
 	ID            string         `json:"id"`
+	Name          string         `json:"name"`
 	Accreditation []*Certificate `json:"accreditation"`
 }
