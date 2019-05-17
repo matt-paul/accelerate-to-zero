@@ -1,0 +1,28 @@
+{
+  "name": "certificate-scraper",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "package.json"
+  ],
+  "author": "Matt Paul",
+  "license": "MIT",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.25",
+    "@types/node": "^8.0.27",
+    "aws-lambda": "^0.1.2",
+    "events": "^1.1.1",
+    "puppeteer": "^0.10.2"
+  },
+  "devDependencies": {
+    "puppeteer-tsd": "0.0.2"
+  }
+}

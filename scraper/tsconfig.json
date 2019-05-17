@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2015", "es5", "es6"],
+    "moduleResolution": "node",
+    // "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": "lib"
+  },
+  "include": ["index.ts", "node_modules/puppeteer-tsd/src/index.d.ts"],
+  "exclude": ["node_modules"]
+}
