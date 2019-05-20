@@ -1,3 +1,7 @@
+const targetAddress = new URL(
+  process.env.TARGET_ADDRESS || `https://www.acceleratetozero.org`
+)
+
 module.exports = {
   siteMetadata: {
     title: `Accelerate to Zero`,
@@ -6,6 +10,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: targetAddress.href.slice(0, -1),
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -32,10 +42,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "accelerate-to-zero-static-website",
+        bucketName: process.env.TARGET_BUCKET_NAME || "acceleratetozero.org",
         acl: null,
-        protocol: "https",
-        hostname: "www.acceleratetozero.org",
+        region: process.env.AWS_REGION,
+        protocol: targetAddress.protocol.slice(0, -1),
+        hostname: targetAddress.hostname,
+        acl: null,
+        params: {
+          // In case you want to add any custom content types: https://github.com/jariz/gatsby-plugin-s3/blob/master/recipes/custom-content-type.md
+        },
       },
     },
     {

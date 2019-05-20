@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import text from "../text"
+import Form from "../components/form"
 
 const ContentContainer = ({ children }: { children: any }) => (
   <div>{children}</div>
@@ -42,6 +43,8 @@ const HomePage = () => (
         Contribute to this project at
         www.github.com/matt-paul/accerlerate-to-zero
       </p>
+
+      <Form />
     </ContentContainer>
   </Layout>
 )
