@@ -34,6 +34,8 @@ module.exports = {
       options: {
         bucketName: "accelerate-to-zero-static-website",
         acl: null,
+        protocol: "https",
+        hostname: "www.acceleratetozero.org",
       },
     },
     {
