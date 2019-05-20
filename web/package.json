@@ -13,6 +13,7 @@
     "@types/react-native": "^0.57.40",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__addon-links": "^3.3.4",
+    "aws-amplify": "^1.1.28",
     "babel-plugin-react-native-web": "^0.10.1",
     "gatsby": "^2.1.31",
     "gatsby-image": "^2.0.33",

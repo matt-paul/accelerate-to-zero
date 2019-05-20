@@ -20,6 +20,28 @@ const HomePage = () => (
       <h1>{text.home.pageHeading}</h1>
       <p>{text.home.main.p1}</p>
       <p>{text.home.main.p2}</p>
+      <h2>What do we offer developers?</h2>
+      <p>
+        A single place to consume the data you are looking for on the
+        environmental credentials of companies
+      </p>
+      <p>A modern graphql api to reduce network load on your application.</p>
+      <h2>What do we offer certifcate authorities?</h2>
+      <p>Single place to find data - easier for developers to use your data</p>
+      <p>
+        Spread the word - allow your certificates and work to reach more people
+      </p>
+      <p>
+        Work with you to save you money - you don't need a fancy api of your own
+        - give us a csv and we will make it easily available
+      </p>
+      <h2>Developers - Getting started</h2>
+      <p>Graphql playground available at ......</p>
+      <p>Api at api.acceleratetozero.com</p>
+      <p>
+        Contribute to this project at
+        www.github.com/matt-paul/accerlerate-to-zero
+      </p>
     </ContentContainer>
   </Layout>
 )
