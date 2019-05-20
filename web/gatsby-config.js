@@ -30,6 +30,13 @@ module.exports = {
     `gatsby-plugin-typescript`,
     "gatsby-plugin-typescript-checker",
     {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "accelerate-to-zero-static-website",
+        acl: null,
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
