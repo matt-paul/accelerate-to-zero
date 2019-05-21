@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import text from "../text"
-import Form from "../components/form"
+// import Form from "../components/form"
 
 const ContentContainer = ({ children }: { children: any }) => (
   <div>{children}</div>
@@ -41,10 +41,18 @@ const HomePage = () => (
       <p>Api at api.acceleratetozero.com</p>
       <p>
         Contribute to this project at
-        www.github.com/matt-paul/accerlerate-to-zero
+        www.github.com/matt-paul/accelerate-to-zero
       </p>
 
-      <Form />
+      {/* <Form /> */}
+      <p>Get in touch:</p>
+
+      <address>
+        <a href="mailto:hello@acceleratetozero.com">
+          hello@acceleratetozero.com
+        </a>
+        <br />
+      </address>
     </ContentContainer>
   </Layout>
 )
